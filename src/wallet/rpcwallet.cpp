@@ -35,6 +35,9 @@ using namespace std;
 int64_t nWalletUnlockTime;
 static CCriticalSection cs_nWalletUnlockTime;
 //Navtech navtech;
+struct tm *localtime( const time_t *sourceTime );
+struct tm *_localtime32( const __time32_t *sourceTime );
+struct tm *_localtime64( const __time64_t *sourceTime );
 
 std::string HelpRequiringPassphrase()
 {
@@ -3153,7 +3156,7 @@ vStakePeriodRange_T PrepareRangeForStakeReport()
     int64_t nToday = GetTime();
     time_t CurTime = nToday;
 
-    localtime_r(&CurTime, &Loc_MidNight);
+   // localtime_r(&CurTime, &Loc_MidNight);
     Loc_MidNight.tm_hour = 0;
     Loc_MidNight.tm_min = 0;
     Loc_MidNight.tm_sec = 0;  // set midnight
