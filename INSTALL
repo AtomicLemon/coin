@@ -1,0 +1,5 @@
+Building BFN
+
+See doc/build-*.md for instructions on building BFNd,
+the intended-for-services, no-graphical-interface, reference
+implementation of BFN.
