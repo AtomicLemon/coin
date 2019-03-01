@@ -27,7 +27,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     // txNew.vout[0].scriptPubKey.clear();
     txNew.vout[0].nValue = genesisReward;
     txNew.vout[0].scriptPubKey.clear();
-    txNew.strDZeel = "floranode genesis block";
+    txNew.strDZeel = "floranode genesis block is being generated";
 
     CBlock genesis;
     genesis.nTime    = nTime;
@@ -55,7 +55,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "floranode Coin is 28/Feb/2019 Born";
+    const char* pszTimestamp = "Bitcoin Flora Coin is 28/Feb/2019 Born with success and energy";
     const CScript genesisOutputScript = CScript() << ParseHex("04bf5608f13e9b2781b839ea78adbd1cb90d8fc17dcc67028e93e65223ea77f8bc8d8eed1191f37dd0ad20f371912d86e1c2e7369251cb06d2a3fdc5e26262d6df") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -177,17 +177,17 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0x80;
-        pchMessageStart[1] = 0x50;
-        pchMessageStart[2] = 0x34;
-		pchMessageStart[3] = 0x20;
+        pchMessageStart[0] = 0x65;
+        pchMessageStart[1] = 0x52;
+        pchMessageStart[2] = 0x33;
+		pchMessageStart[3] = 0x21;
 		nDefaultPort = 54116;
         nPruneAfterHeight = 100000;
         bnProofOfWorkLimit = arith_uint256(~arith_uint256() >> 1);
 
-        genesis = CreateGenesisBlock(1460561040, 2710, 0x1f00ffff, 1, 0);
+        genesis = CreateGenesisBlock(1460561040, 7530, 0x1f00ffff, 1, 0);
 // For Genesis Block Start
-  /*  printf("Generating genesis block...\n");
+ /*  printf("Generating genesis block...\n");
         uint32_t nounce = 1;
 		while(1) {
          //printf("Nounce: %d\n", nounce);
@@ -218,12 +218,12 @@ public:
 
 
 	         consensus.hashGenesisBlock = genesis.GetHash();
-         //    printf("genesis: %s\n",consensus.hashGenesisBlock.GetHex().c_str());
-          //   printf("merklehash: %s\n",genesis.hashMerkleRoot.ToString().c_str());	
+       //    printf("genesis: %s\n",consensus.hashGenesisBlock.GetHex().c_str());
+         // printf("merklehash: %s\n",genesis.hashMerkleRoot.ToString().c_str());	
 
 
-        assert(consensus.hashGenesisBlock == uint256S("0xac87b314e08aaa60631be4cdb901e4254bd23a03ee0bfce4297174404fabc17e"));
-        assert(genesis.hashMerkleRoot == uint256S("0x5b038baf4e4935138726c8ebe22ed0c147d88624bb4bc17d7f0aa888924b82dd"));
+        assert(consensus.hashGenesisBlock == uint256S("0xbad4950fb7fc5cfc7fb49b0bb41a04d6709cd0310467916eb9248d8fd82cd51e"));
+        assert(genesis.hashMerkleRoot == uint256S("0xbd7b35a214b8fa0364845aa927d48324f9a27415bf12957be9fba2761feee594"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,25);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,85);
@@ -244,7 +244,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("0xac87b314e08aaa60631be4cdb901e4254bd23a03ee0bfce4297174404fabc17e")),
+            ( 0, uint256S("0xbad4950fb7fc5cfc7fb49b0bb41a04d6709cd0310467916eb9248d8fd82cd51e")),
 /*            (10000, uint256S("0x844f1eab31e8773328ba21970362b4fcff19622f13787cbbe164649ad2393b7a"))
             (10000, uint256S("0x844f1eab31e8773328ba21970362b4fcff19622f13787cbbe164649ad2393b7a"))
             (20000, uint256S("0xfea6d227117db665c5cff2fca0b29d850c5e7f064463d001f5228e80a7e21624"))
