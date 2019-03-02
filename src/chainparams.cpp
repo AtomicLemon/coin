@@ -27,7 +27,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     // txNew.vout[0].scriptPubKey.clear();
     txNew.vout[0].nValue = genesisReward;
     txNew.vout[0].scriptPubKey.clear();
-    txNew.strDZeel = "floranode genesis block is being generated";
+    txNew.strDZeel = "NavCoin genesis block";
 
     CBlock genesis;
     genesis.nTime    = nTime;
@@ -55,7 +55,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Bitcoin Flora Coin is 28/Feb/2019 Born with success and energy";
+    const char* pszTimestamp = "Bitcoin Flora is born on march";
     const CScript genesisOutputScript = CScript() << ParseHex("04bf5608f13e9b2781b839ea78adbd1cb90d8fc17dcc67028e93e65223ea77f8bc8d8eed1191f37dd0ad20f371912d86e1c2e7369251cb06d2a3fdc5e26262d6df") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -86,7 +86,7 @@ public:
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
-        consensus.BIP34Height = 900000;
+        consensus.BIP34Height = 900000999;
         consensus.BIP34Hash = uint256S("0xecb7444214d068028ec1fa4561662433452c1cbbd6b0f8eeb6452bcfa1d0a7d6");
         consensus.powLimit = ArithToUint256(~arith_uint256(0) >> 1);
         consensus.nPowTargetTimespan = 30;
@@ -95,7 +95,7 @@ public:
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 15120; // 75% of 20160
         consensus.nMinerConfirmationWindow = 20160;
-        consensus.nStakeMinAge = 60 * 60 * 4;	// minimum for coin age: 2 hours
+        consensus.nStakeMinAge = 60 * 60 * 4;   // minimum for coin age: 2 hours
         consensus.nTargetSpacing = 3 * 60; // Blocktime: 30 secs
         consensus.nStakeCombineThreshold = 1000 * COIN;
         consensus.nStakeSplitThreshold = 2 * consensus.nStakeCombineThreshold;
@@ -177,53 +177,60 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0x65;
-        pchMessageStart[1] = 0x52;
-        pchMessageStart[2] = 0x33;
-		pchMessageStart[3] = 0x21;
-		nDefaultPort = 54116;
+        pchMessageStart[0] = 0x80;
+        pchMessageStart[1] = 0x50;
+        pchMessageStart[2] = 0x34;
+        pchMessageStart[3] = 0x20;
+        nDefaultPort = 54116;
         nPruneAfterHeight = 100000;
         bnProofOfWorkLimit = arith_uint256(~arith_uint256() >> 1);
 
-        genesis = CreateGenesisBlock(1460561040, 7530, 0x1f00ffff, 1, 0);
-// For Genesis Block Start
- /*  printf("Generating genesis block...\n");
+        genesis = CreateGenesisBlock(1460561080, 25e7, 0x1f00ffff, 1, 0);
+
+// Start
+
+/*
+     printf("Generating genesis block...\n");
         uint32_t nounce = 1;
-		while(1) {
-         //printf("Nounce: %d\n", nounce);
-			genesis.nNonce = nounce;
-			consensus.hashGenesisBlock = genesis.GetHash();
-			
-			if(consensus.hashGenesisBlock.GetHex() < std::string("0000ffffff000000000000000000000000000000000000000000000000000000")) {
-			//if(hashGenesisBlock.GetHex() < bnProofOfWorkLimit.GetHex()) {
-			//if(consensus.hashGenesisBlock.GetHex() < std::string("0000082da923a04678394f873852c7f08b777af30224b6e23296f586370e80ae")) {
-				printf("nounce: %x\n",nounce);
-				break;
-			} else {
-				if( nounce % 10000 == 0)
-					printf("nounce: %x, hash: %s, merklehash:%s\n",nounce, consensus.hashGenesisBlock.GetHex().c_str(),genesis.hashMerkleRoot.ToString().c_str());
-				++nounce;
-			}
-		} 
-		
+        while(1) {
+            //printf("Nounce: %d\n", nounce);
+            genesis.nNonce = nounce;
+            consensus.hashGenesisBlock = genesis.GetHash();
+            
+            if(consensus.hashGenesisBlock.GetHex() < std::string("0000ffffff000000000000000000000000000000000000000000000000000000")) {
+            //if(hashGenesisBlock.GetHex() < bnProofOfWorkLimit.GetHex()) {
+            //if(consensus.hashGenesisBlock.GetHex() < std::string("0000082da923a04678394f873852c7f08b777af30224b6e23296f586370e80ae")) {
+                printf("nounce: %x\n",nounce);
+                break;
+            } else {
+                if( nounce % 10000 == 0)
+                    printf("nounce: %x, hash: %s, merklehash:%s\n",nounce, consensus.hashGenesisBlock.GetHex().c_str(),genesis.hashMerkleRoot.ToString().c_str());
+                ++nounce;
+            }
+        } 
+        
         printf("genesis: %s\n",consensus.hashGenesisBlock.GetHex().c_str());
-        printf("merklehash: %s\n",genesis.hashMerkleRoot.ToString().c_str());	
+        printf("merklehash: %s\n",genesis.hashMerkleRoot.ToString().c_str());   
+*/
+        //ENd
+
+        
            // for(; genesis.GetHash() > consensus.powLimit; genesis.nNonce++){ }
            // printf("new testnet genesis merkle root: %s\n", genesis.hashMerkleRoot.ToString().c_str());
            // printf("new testnet genesis nonce: %d\n", genesis.nNonce);
            // printf("new testnet genesis hash: %s\n", genesis.GetHash().ToString().c_str());
-*/
-
-// For Genesis Block End 
 
 
-	         consensus.hashGenesisBlock = genesis.GetHash();
-       //    printf("genesis: %s\n",consensus.hashGenesisBlock.GetHex().c_str());
-         // printf("merklehash: %s\n",genesis.hashMerkleRoot.ToString().c_str());	
 
 
-        assert(consensus.hashGenesisBlock == uint256S("0xbad4950fb7fc5cfc7fb49b0bb41a04d6709cd0310467916eb9248d8fd82cd51e"));
-        assert(genesis.hashMerkleRoot == uint256S("0xbd7b35a214b8fa0364845aa927d48324f9a27415bf12957be9fba2761feee594"));
+          consensus.hashGenesisBlock = genesis.GetHash();
+
+    //       printf("genesis: %s\n",consensus.hashGenesisBlock.GetHex().c_str());
+      //  printf("merklehash: %s\n",genesis.hashMerkleRoot.ToString().c_str());   
+
+
+     assert(consensus.hashGenesisBlock == uint256S("0xce4d3e591842b67d93ed8022cc77abdbf97be54902c39ba7c07499570b003117"));
+        assert(genesis.hashMerkleRoot == uint256S("0xfcb2b675cd75b67553cb0bd07815ca77629253f22a9643ac9a1b4d66dbb9cf1e"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,25);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,85);
@@ -231,8 +238,8 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x04)(0x88)(0xB2)(0x1E).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
 
-       vSeeds.push_back(CDNSSeedData("1", "66.42.106.220"));
-		vSeeds.push_back(CDNSSeedData("2", "149.28.37.14"));
+        vSeeds.push_back(CDNSSeedData("nav.community", "66.42.106.220"));
+        vSeeds.push_back(CDNSSeedData("navcoin.org", "149.28.37.14"));
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 
@@ -244,7 +251,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("0xbad4950fb7fc5cfc7fb49b0bb41a04d6709cd0310467916eb9248d8fd82cd51e")),
+            ( 0, uint256S("0xce4d3e591842b67d93ed8022cc77abdbf97be54902c39ba7c07499570b003117")),
 /*            (10000, uint256S("0x844f1eab31e8773328ba21970362b4fcff19622f13787cbbe164649ad2393b7a"))
             (10000, uint256S("0x844f1eab31e8773328ba21970362b4fcff19622f13787cbbe164649ad2393b7a"))
             (20000, uint256S("0xfea6d227117db665c5cff2fca0b29d850c5e7f064463d001f5228e80a7e21624"))
@@ -301,7 +308,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
-        consensus.nStakeMinAge = 2;	// minimum for coin age: 2 seconds
+        consensus.nStakeMinAge = 2; // minimum for coin age: 2 seconds
         consensus.nTargetSpacing = 30; // Blocktime: 30 secs
         consensus.nStakeCombineThreshold = 1000 * COIN;
         consensus.nStakeSplitThreshold = 2 * consensus.nStakeCombineThreshold;
@@ -381,10 +388,10 @@ public:
         uint256 hashGenesisBlock = uint256S("0x00006f7464b3c2eb79b99878d6d92d815be7662d1eba485babb6328b3d3b327f");
         uint256 hashMerkleRoot = uint256S("0x58a4826e64f486bc438f1553cf1dafffc338aa22f8fc2487cb8a378eef37056b");
         uint32_t nNonce = 2043455443;
-	    
+        
         genesis = CreateGenesisBlockTestnet(nTimestamp, nNonce, 0x1d00ffff, 1, 0);
         consensus.hashGenesisBlock = genesis.GetHash();
-	    
+        
         if (true && (genesis.GetHash() != hashGenesisBlock || genesis.hashMerkleRoot != hashMerkleRoot))
         {
             printf("recalculating params for testnet.\n");
@@ -453,7 +460,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
-        consensus.nStakeMinAge = 2;	// minimum for coin age: 2 seconds
+        consensus.nStakeMinAge = 2; // minimum for coin age: 2 seconds
         consensus.nTargetSpacing = 30; // Blocktime: 30 secs
         consensus.nStakeCombineThreshold = 1000 * COIN;
         consensus.nStakeSplitThreshold = 2 * consensus.nStakeCombineThreshold;
@@ -495,7 +502,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_COMMUNITYFUND].bit = 6;
         consensus.vDeployments[Consensus::DEPLOYMENT_COMMUNITYFUND].nStartTime = 1493424000; // May 1st, 2017
         consensus.vDeployments[Consensus::DEPLOYMENT_COMMUNITYFUND].nTimeout = 1556668800; // May 1st, 2019
-	    
+        
         // Deployment of NTP Sync
         consensus.vDeployments[Consensus::DEPLOYMENT_NTPSYNC].bit = 8;
         consensus.vDeployments[Consensus::DEPLOYMENT_NTPSYNC].nStartTime = 1525132800; // May 1st, 2018
@@ -616,7 +623,7 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
-        consensus.nStakeMinAge = 2;	// minimum for coin age: 2 seconds
+        consensus.nStakeMinAge = 2; // minimum for coin age: 2 seconds
         consensus.nTargetSpacing = 30; // Blocktime: 30 secs
         consensus.nStakeCombineThreshold = 1000 * COIN;
         consensus.nStakeSplitThreshold = 2 * consensus.nStakeCombineThreshold;
