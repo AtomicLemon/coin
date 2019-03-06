@@ -106,6 +106,36 @@ ZMQ dependencies:
 Dependencies for the GUI: Ubuntu & Debian
 -----------------------------------------
 
+Before We Build
+You will only be able to build when dependencies are met!
+
+Step1:
+Build requirements:
+
+sudo apt-get install build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils
+
+Step2:
+installing required Boost library files:
+
+sudo apt-get install libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev
+
+Step3:
+BerkeleyDB is required for the wallet:
+
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:bitcoin/bitcoin
+sudo apt-get update
+sudo apt-get install libdb4.8-dev libdb4.8++-dev
+
+Step 4
+Miniupnpc:
+
+sudo apt-get install libminiupnpc-dev
+
+Step 5
+sudo apt-get install build-essential libtool autotools-dev automake pkg-config bsdmainutils curl
+
+
 If you want to build BFN-Qt, make sure that the required packages for Qt development
 are installed. Either Qt 5 or Qt 4 are necessary to build the GUI.
 If both Qt 4 and Qt 5 are installed, Qt 5 will be used. Pass `--with-gui=qt4` to configure to choose Qt4.
